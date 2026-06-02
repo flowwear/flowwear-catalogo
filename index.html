@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>FlowWear | Catálogo Digital</title>
+    <style>
+        :root {
+            --bg-color: #0a0a0a;
+            --card-bg: #141414;
+            --text-color: #ffffff;
+            --text-muted: #888888;
+            --accent-color: #ffffff;
+            --accent-hover: #e0e0e0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            padding-bottom: 100px;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            border-bottom: 1px solid #222;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            letter-spacing: 4px;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        header p {
+            color: var(--text-muted);
+            margin-top: 5px;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+        }
+
+        .catalog-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background-color: var(--card-bg);
+            border: 1px solid #222;
+            border-radius: 4px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 350px;
+            background-color: #222;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-title {
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .product-price {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .product-details {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+
+        .selector-group {
+            margin-bottom: 15px;
+        }
+
+        .selector-group label {
+            display: block;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+
+        select {
+            width: 100%;
+            padding: 8px;
+            background-color: #000;
+            color: #fff;
+            border: 1px solid #333;
+            border-radius: 2px;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .btn-add {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--accent-color);
+            color: #000;
+            border: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-add:hover {
+            background-color: var(--accent-hover);
+        }
+
+        /* Barra del Carrito Flotante abajo */
+        .cart-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #000;
+            border-top: 2px solid #222;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .cart-info h4 {
+            font-size: 1rem;
+            text-transform: uppercase;
+        }
+
+        .cart-info p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .btn-checkout {
+            background-color: #25d366; /* Verde WhatsApp */
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-checkout:hover {
+            background-color: #20ba5a;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            border-top: 1px solid #111;
+        }
+
+        footer a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.2s;
+        }
+
+        footer a:hover {
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>FlowWear</h1>
+        <p>Estilo Urbano & Minimalista</p>
+    </header>
+
+    <main class="catalog-container">
+
+        <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=500" alt="Camisa Oversize" class="product-image">
+            <div class="product-info">
+                <h3 class="product-title">Camisa Street Oversize</h3>
+                <div class="product-price">$320 MXN</div>
+                <p class="product-details">Algodón pesado premium, corte oversize relajado ideal para el estilo diario.</p>
+                
+                <div class="selector-group">
+                    <label>Color</label>
+                    <select id="color-prod1">
+                        <option value="Negro">Negro</option>
+                        <option value="Blanco">Blanco</option>
+                    </select>
+                </div>
+
+                <div class="selector-group">
+                    <label>Talla</label>
+                    <select id="talla-prod1">
+                        <option value="S">S</option>
+                        <option value="M">M</option>
+                        <option value="L">L</option>
+                        <option value="XL">XL</option>
+                    </select>
+                </div>
+
+                <button class="btn-add" onclick="agregarAlCarrito('Camisa Street Oversize', 320, 'color-prod1', 'talla-prod1')">Agregar al Carrito</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=500" alt="Camisa Cyberpunk" class="product-image">
+            <div class="product-info">
+                <h3 class="product-title">Camisa Graphic Tech</h3>
+                <div class="product-price">$350 MXN</div>
+                <p class="product-details">Estampado en serigrafía de alta durabilidad con diseño minimalista en la espalda.</p>
+                
+                <div class="selector-group">
+                    <label>Color</label>
+                    <select id="color-prod2">
+                        <option value="Negro">Negro</option>
+                        <option value="Gris Oxford">Gris Oxford</option>
+                    </select>
+                </div>
+
+                <div class="selector-group">
+                    <label>Talla</label>
+                    <select id="talla-prod2">
+                        <option value="S">S</option>
+                        <option value="M">M</option>
+                        <option value="L">L</option>
+                    </select>
+                </div>
+
+                <button class="btn-add" onclick="agregarAlCarrito('Camisa Graphic Tech', 350, 'color-prod2', 'talla-prod2')">Agregar al Carrito</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1562157873-818bc0726f68?w=500" alt="Camisa Premium" class="product-image">
+            <div class="product-info">
+                <h3 class="product-title">Camisa Heavyweight Acid Wash</h3>
+                <div class="product-price">$380 MXN</div>
+                <p class="product-details">Efecto deslavado artesanal con textura suave al tacto. Edición limitada.</p>
+                
+                <div class="selector-group">
+                    <label>Color</label>
+                    <select id="color-prod3">
+                        <option value="Gris Deslavado">Gris Deslavado</option>
+                    </select>
+                </div>
+
+                <div class="selector-group">
+                    <label>Talla</label>
+                    <select id="talla-prod3">
+                        <option value="M">M</option>
+                        <option value="L">L</option>
+                        <option value="XL">XL</option>
+                    </select>
+                </div>
+
+                <button class="btn-add" onclick="agregarAlCarrito('Camisa Heavyweight Acid Wash', 380, 'color-prod3', 'talla-prod3')">Agregar al Carrito</button>
+            </div>
+        </div>
+
+    </main>
+
+    <div class="cart-bar">
+        <div class="cart-info">
+            <h4 id="cart-count">Carrito: 0 productos</h4>
+            <p id="cart-total">Total: $0 MXN</p>
+        </div>
+        <button class="btn-checkout" onclick="enviarWhatsApp()">Pedir por WhatsApp</button>
+    </div>
+
+    <footer>
+        <p>© 2026 FlowWear. Todos los derechos reservados.</p>
+        <div style="margin-top: 15px;">
+            <a href="https://www.instagram.com/flow.wear.1?igsh=eHU3eG52aTkzMGt4&utm_source=qr" target="_blank">Instagram</a> | 
+            <a href="https://www.tiktok.com/@flow.wear.1?_r=1&_t=ZS-96t2UrWKDpv" target="_blank">TikTok</a> | 
+            <a href="https://www.facebook.com/share/14iWDuZE8BK/?mibextid=wwXIfr" target="_blank">Facebook</a>
+        </div>
+    </footer>
+
+    <script>
+        // Tu número de WhatsApp configurado sin espacios
+        const MI_WHATSAPP = '529831646790'; 
+
+        let carrito = [];
+
+        function agregarAlCarrito(nombre, precio, idColor, idTalla) {
+            const colorSeleccionado = document.getElementById(idColor).value;
+            const tallaSeleccionada = document.getElementById(idTalla).value;
+
+            const producto = {
+                nombre: nombre,
+                precio: precio,
+                color: colorSeleccionado,
+                talla: tallaSeleccionada
+            };
+
+            carrito.push(producto);
+            actualizarInterfazCarrito();
+            alert(`¡${nombre} (${tallaSeleccionada} - ${colorSeleccionado}) agregada al carrito!`);
+        }
+
+        function actualizarInterfazCarrito() {
+            const total = carrito.reduce((sum, prod) => sum + prod.precio, 0);
+            document.getElementById('cart-count').innerText = `Carrito: ${carrito.length} producto(s)`;
+            document.getElementById('cart-total').innerText = `Total: $${total} MXN`;
+        }
+
+        function enviarWhatsApp() {
+            if (carrito.length === 0) {
+                alert("Tu carrito está vacío. Agrega algunos modelos primero.");
+                return;
+            }
+
+            // Construir el mensaje de texto limpio y ordenado
+            let mensaje = "¡Hola FlowWear! Me gustaría hacer un pedido de los siguientes modelos:\n\n";
+            let total = 0;
+
+            carrito.forEach((prod, index) => {
+                mensaje += `${index + 1}. ${prod.nombre}\n`;
+                mensaje += `   Talla: ${prod.talla} | Color: ${prod.color}\n`;
+                mensaje += `   Precio: $${prod.precio} MXN\n\n`;
+                total += prod.precio;
+            });
+
+            mensaje += `*Total del Pedido: $${total} MXN*`;
+
+            const mensajeCodificado = encodeURIComponent(mensaje);
+            const urlWhatsApp = `https://wa.me/${MI_WHATSAPP}?text=${mensajeCodificado}`;
+
+            window.open(urlWhatsApp, '_blank');
+        }
+    </script>
+</body>
+</html>
