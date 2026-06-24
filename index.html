@@ -814,9 +814,17 @@ updateCountdown();
 
 var cart = [];
 
+var STOCK = {4: 1, 6: 1};
+
 function addCart(id, name, brand, size, color, price, img) {
+  var limit = STOCK[id] !== undefined ? STOCK[id] : 99;
   var ex = cart.find(function(i){ return i.id === id; });
-  if (ex) { ex.qty++; } 
+  var currentQty = ex ? ex.qty : 0;
+  if (currentQty >= limit) {
+    toast('Solo hay ' + limit + ' unidad' + (limit > 1 ? 'es' : '') + ' disponible' + (limit > 1 ? 's' : '') + ' de este modelo');
+    return;
+  }
+  if (ex) { ex.qty++; }
   else { cart.push({id:id,name:name,brand:brand,size:size,color:color,price:price,img:img,qty:1}); }
   renderCart();
   toast('✔ ' + name + ' agregada');
