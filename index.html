@@ -396,10 +396,7 @@ footer img{height:28px}
   font-size:1rem;letter-spacing:2px;
   padding:2px 12px;
 }
-.talla-price{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:1.1rem;color:var(--w)
-}
+
 
 /* ── RESPONSIVE ─────────────────────────────────────────── */
 @media(max-width:900px){
@@ -414,6 +411,40 @@ footer img{height:28px}
 @media(max-width:500px){
   .side-feed{grid-template-columns:1fr}
 }
+
+/* ── ENTREGAS BOTTOM SECTION ──────────────────────────── */
+.entregas-bottom{padding:60px 36px;border-top:1px solid var(--g2)}
+.entregas-bottom .side-head{
+  background:transparent;border:none;padding:0;
+  margin-bottom:32px;text-align:center
+}
+.entregas-bottom .side-lbl{display:block;margin-bottom:8px}
+.entregas-bottom .side-title{font-size:clamp(2rem,4vw,3.5rem)}
+.entregas-bottom .side-sub{max-width:480px;margin:8px auto 0;text-align:center}
+.entregas-bottom .side-feed{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+  gap:1px;background:var(--g2);padding:0
+}
+.entregas-bottom .side-img{aspect-ratio:3/4}
+.entregas-bottom .side-cta{
+  background:transparent;border:none;
+  padding:24px 0 0;text-align:center
+}
+.entregas-bottom .side-wa{
+  display:inline-block;
+  border:1px solid var(--g2);
+  padding:10px 24px;
+  font-family:"Barlow Condensed",sans-serif;
+  font-size:.78rem;letter-spacing:2px;
+  text-transform:uppercase;color:var(--g);
+  text-decoration:none;transition:all .2s
+}
+.entregas-bottom .side-wa:hover{border-color:#2a4f82;color:#c8cdd8}
+
+/* Remove sticky from split layout now that aside is gone */
+.split-layout{display:block}
+.split-main{width:100%}
 </style>
 </head>
 <body>
@@ -452,6 +483,7 @@ footer img{height:28px}
     <li><a href="#catalogo">Catálogo</a></li>
     <li><a href="#tallas">Tallas</a></li>
     <li><a href="#proximamente">Próximamente</a></li>
+    <li><a href="#entregas">Entregas</a></li>
     <li><a href="#nosotros">Nosotros</a></li>
     <li><a href="#contacto">Contacto</a></li>
   </ul>
@@ -692,7 +724,6 @@ footer img{height:28px}
           <th>Talla</th>
           <th>Ancho (cm)</th>
           <th>Alto (cm)</th>
-          <th>Precio</th>
         </tr>
       </thead>
       <tbody>
@@ -700,19 +731,16 @@ footer img{height:28px}
           <td><span class="talla-badge">CH</span></td>
           <td>44</td>
           <td>72</td>
-          <td class="talla-price">$320 MXN</td>
         </tr>
         <tr>
           <td><span class="talla-badge">M</span></td>
           <td>46</td>
           <td>75</td>
-          <td class="talla-price">$350 MXN</td>
         </tr>
         <tr>
           <td><span class="talla-badge">G</span></td>
           <td>52</td>
           <td>76</td>
-          <td class="talla-price">$380 MXN</td>
         </tr>
       </tbody>
     </table>
@@ -851,7 +879,10 @@ footer img{height:28px}
 
   </main>
 
-<aside class="side-entregas" id="entregas">
+
+</div>
+
+<section class="entregas-bottom" id="entregas">
   <div class="side-head">
     <div class="side-lbl">— Ventas reales</div>
     <div class="side-title">PEDIDOS<br>ENTREGADOS</div>
@@ -870,9 +901,7 @@ footer img{height:28px}
   <div class="side-cta">
     <a href="https://wa.me/9831646790" target="_blank" class="side-wa">¿El tuyo puede ser el siguiente? 🔥</a>
   </div>
-</aside>
-
-</div>
+</section>
 
 <!-- FOOTER -->
 <footer>
@@ -971,7 +1000,7 @@ var ALL_PRODUCTS = [
 
 // ── COUNTDOWN PARA NUEVOS MODELOS ──────────────────────
 // Cambia esta fecha a la fecha real de lanzamiento (formato: año, mes-1, día, hora, minuto)
-var LAUNCH_DATE = new Date('2026-06-30T17:00:00-06:00').getTime(); // martes 30 jun 2026, 5:00pm hora Campeche (UTC-6)
+var LAUNCH_DATE = new Date(Date.now() + 30 * 60 * 1000).getTime(); // 30 minutos desde que se carga la página
 var countdownDone = false;
 
 function updateCountdown() {
@@ -1011,7 +1040,7 @@ function unlockApartarButtons() {
   document.querySelectorAll('.soon-card .soon-img').forEach(function(img){
     img.classList.add('unlocked');
   });
-  document.querySelector('.countdown-label').textContent = '¡Ya disponibles! Encuéntralos en Nuestros Drops 🔥';
+  document.querySelector('.countdown-label').textContent = 'En espera de más fotos — ¡Ya disponibles para entrega!';
 }
 
 setInterval(updateCountdown, 1000);
