@@ -55,6 +55,18 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .filters{padding:18px 36px;display:flex;gap:8px;flex-wrap:wrap;border-bottom:1px solid var(--g2)}
 .fbtn{font-family:'Barlow Condensed',sans-serif;font-size:.72rem;letter-spacing:2px;text-transform:uppercase;padding:6px 16px;background:transparent;color:var(--g);border:1px solid var(--g2);cursor:pointer;transition:all .2s}
 .fbtn:hover,.fbtn.on{background:#1e3a5f;color:#e8eaf0;border-color:#2a4f82}
+  <div class="filters">
+    <button class="fbtn on" onclick="filter('all',this)">Todos</button>
+    <button class="fbtn" onclick="filter('gorras',this)">Gorras 🧢</button> <!-- NUEVO BOTÓN -->
+    <button class="fbtn" onclick="filter('palm-angels',this)">Palm Angels</button>
+    <button class="fbtn" onclick="filter('hugo-boss',this)">Hugo Boss</button>
+    <button class="fbtn" onclick="filter('fear-of-god',this)">Fear of God</button>
+    <button class="fbtn" onclick="filter('anti-social-social-club',this)">ASSC</button>
+    <button class="fbtn" onclick="filter('chrome-hearts',this)">Chrome Hearts</button>
+    <button class="fbtn" onclick="filter('amiri',this)">AMIRI</button>
+    <button class="fbtn" onclick="filter('london-gothic',this)">London Gothic</button>
+    <button class="fbtn" onclick="filter('disp',this)">Disponibles</button>
+  </div>
 
 /* GRID */
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:1px;background:var(--g2)}
